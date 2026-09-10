@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Primeiro Workflow Teste
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello-job:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout do código
+        uses: actions/checkout@v4
+    
+      - name: Hello World
+        run: echo "Helo World"

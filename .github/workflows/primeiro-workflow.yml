@@ -3,7 +3,7 @@
 name: Primeiro Workflow Teste
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -17,3 +17,17 @@ jobs:
     
       - name: Hello World
         run: echo "Helo World"
+
+  
+  discord-notificacao:
+    runs-on: ubuntu-latest
+    environment: github-automacao
+
+    steps:
+      - name: Notificacao discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{"content": "PR realizado com sucesso"}' \
+          ${{ secrets.DISCORD_WEBHOOK }}
+
